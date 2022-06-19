@@ -27,7 +27,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    background-color: blue; 
     margin: 0 auto;  
     width: 80vw;
     height: 35vw;
@@ -40,7 +39,7 @@ body {
     background: #A7E9AF;
     border: 1px solid #99CEA8;
     border-radius: 5px;
-    margin: 5px;
+    margin: 20px;
 }
 
 .card img {
@@ -62,4 +61,31 @@ body {
 
 .disable-onclick{
     pointer-events: none;
+}
+@media (max-width: 614px) {
+    .body {
+        background-color: black;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        
+        
+    }
+    .parrot-title {
+        width: 312px;
+        height: 63px;
+        position: relative;
+        left: 5%;
+        top: 3%;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 42px;
+        text-align: center;   
+        
+        
+    }
+    .container{
+        width: 50vw;
+    }  
 }
