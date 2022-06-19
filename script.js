@@ -19,6 +19,10 @@ let secondCardUp = false;
 let matchingPairs = 0
 let numberOfMatchings = 0;
 let click = 0;
+let clock = 0;
+let timer =0;
+
+
 
 function verifyNumberOfCards() {
     numberOfCards = prompt(" De 4 a 14, com quntas cartas você quer jogar? Lembre-se de escolher um número par!");
@@ -27,31 +31,26 @@ function verifyNumberOfCards() {
     while (numberOfCards < 4 || numberOfCards > 14 || numberOfCards % 2 !== 0 || numberOfCards === isNaN) {
         numberOfCards = prompt("Você precisa escolher um número válido entre 4 e 14!")
     }
-    let teste = ["testwe", "testi", "tests", "testa", "trea"];
-    teste.sort(comparador);
-    console.log(teste);
+    
     startingTheGame();
 }
 
 
 function startingTheGame() {
 
-    // faceCards.sort(comparador)
+    cardsOnTheBoard = numberOfCards / 2; 
 
-    cardsOnTheBoard = numberOfCards / 2; //Pega o número de cartas escolhido pelo usuário e divide por dois para poder formar o par.
-
-    for (let index = 0; index < cardsOnTheBoard; index++) { //percorre a lista embaralhada de gifs e adicionas no deck (pelo index) a quantidade referente a metade do numero digitado pelo usuario
+    for (let index = 0; index < cardsOnTheBoard; index++) { 
         deckOfCards.push(faceCards[index]);
         deckOfCards.push(faceCards[index]);
 
     }
-    deckOfCards.sort(comparador);//embaralha o deck com todos os pares
-    for (let index = 0; index < numberOfCards; index++) { //percorre a lista embaralhada de gifs e adicionas no deck (pelo index) a quantidade referente a metade do numero digitado pelo usuario
+    deckOfCards.sort(comparador);
+    for (let index = 0; index < numberOfCards; index++) { 
 
         toPutTheCards(index);
     }
-    // alert (deckOfCards);
-
+   
 
     console.log(deckOfCards);
 
@@ -61,7 +60,7 @@ function comparador() {
     return Math.random() - 0.5;
 }
 
-function toPutTheCards(index) {// aula de quinta
+function toPutTheCards(index) {
 
     let container = document.querySelector(".container");
     container.innerHTML += ` 
@@ -94,7 +93,8 @@ function turnTheCard(card) {
                 setTimeout(comparePair, 1000);
             }    
     }
-
+    // document.querySelector(".game-time").innerHTML = timer;
+    // clock = setInterval(increaseTime,1000);
 }
 
 function comparePair () {
@@ -123,6 +123,12 @@ function comparePair () {
     faceUpCards=[];
     click = 0;
     if(matchingPairs === numberOfMatchings){
+        clearInterval(timer);
         alert(`Você ganhou em ${numberOfMoves} jogadas!`);
     }
 }
+
+//function increaseTime () {
+  //   timer++;
+    // document.querySelector(".game-time").innerHTML = `Tempo de jogo: ${timer} segundos`;    
+ //}
