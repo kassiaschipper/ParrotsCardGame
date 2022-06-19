@@ -4,8 +4,7 @@
 
 body {
     font-family: "Roboto", cursive;
-    width: 1110px;
-    height: 660px;
+   
     margin: 0 auto;
     background-color: #EEF9BF;
 }
@@ -13,17 +12,27 @@ body {
 .game-title {
     width: 540px;
     height: 63px;
-    margin: 40px auto;
-    ;
+    margin: 40px auto;    
     font-weight: 700;
     font-size: 56px;
     line-height: 66px;
     letter-spacing: -0.004em;
     color: #75B79E;
+    display: flex;
+    align-items: center;
 }
 
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: blue; 
+    margin: 0 auto;  
+    width: 80vw;
+    height: 35vw;
+}   
 .card {
-    position: absolute;
     width: 117px;
     height: 146px;
     left: 122px;
@@ -31,10 +40,26 @@ body {
     background: #A7E9AF;
     border: 1px solid #99CEA8;
     border-radius: 5px;
+    margin: 5px;
 }
 
 .card img {
     width: 100px;
     height: 100px;
     margin: 24px 10px 22px 7px;
+}
+.hidden{
+    display: none;
+}
+.visible{
+    display: block;
+}
+
+.card:hover {
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+    cursor:pointer;
+}
+
+.disable-onclick{
+    pointer-events: none;
 }

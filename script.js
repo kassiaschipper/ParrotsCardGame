@@ -12,12 +12,11 @@ const faceCards = [
 let cardsOnTheBoard = 0;
 let deckOfCards = [];
 let numberOfCards = 0;
-// let numberOfMoves = 0;
-// let moves = 0;
+let numberOfMoves = 0;
 let faceUpCards = [];
 let firstCardUp = false;
 let secondCardUp = false;
-let matchingPair = 0
+let matchingPairs = 0
 let numberOfMatchings = 0;
 let click = 0;
 
@@ -85,12 +84,14 @@ function turnTheCard(card) {
         backCard.classList.add("hidden");
         faceCard.classList.remove("hidden");
 
-        faceUpCards.push(faceCard);
+        card.classList.add("disable-onclick");
         
-        alert("teste");
-            
+        numberOfMoves++;
+        
+        faceUpCards.push(card);
+        
             if(click === 2){
-                comparePair();
+                setTimeout(comparePair, 1000);
             }    
     }
 
@@ -102,6 +103,26 @@ function comparePair () {
     let secondImage = faceUpCards[1].querySelector(".images");
 
     if(firstImage.src === secondImage.src){
-        alert("wooee");
+        matchingPairs++;
+        
+    } else{
+       
+        for(i=0; i<2; i++){
+        
+            let backCard = faceUpCards[i].querySelector(".face-back-card ");
+            let faceCard = faceUpCards[i].querySelector(".face-card ");
+
+            backCard.classList.remove("hidden");
+            faceCard.classList.add("hidden");
+
+            faceUpCards[i].classList.remove("disable-onclick");
+        }
+             
+
+    }
+    faceUpCards=[];
+    click = 0;
+    if(matchingPairs === numberOfMatchings){
+        alert(`Você ganhou em ${numberOfMoves} jogadas!`);
     }
 }
