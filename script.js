@@ -19,9 +19,8 @@ let secondCardUp = false;
 let matchingPairs = 0
 let numberOfMatchings = 0;
 let click = 0;
-let clock = 0;
 let timer =0;
-
+let intervalId ="";
 
 
 function verifyNumberOfCards() {
@@ -52,7 +51,7 @@ function startingTheGame() {
     }
    
 
-    console.log(deckOfCards);
+    intervalId = setInterval(increaseTime,1000);
 
 }
 
@@ -68,6 +67,8 @@ function toPutTheCards(index) {
         <div class="face-back-card"><img  src="imagens\\front.png"></div>
         <div class="face-card hidden">${deckOfCards[index]}</div>
     </div>`;
+
+    
 }
 
 function turnTheCard(card) {
@@ -93,8 +94,7 @@ function turnTheCard(card) {
                 setTimeout(comparePair, 1000);
             }    
     }
-    // document.querySelector(".game-time").innerHTML = timer;
-    // clock = setInterval(increaseTime,1000);
+    
 }
 
 function comparePair () {
@@ -123,12 +123,47 @@ function comparePair () {
     faceUpCards=[];
     click = 0;
     if(matchingPairs === numberOfMatchings){
-        clearInterval(timer);
-        alert(`Você ganhou em ${numberOfMoves} jogadas!`);
+       
+        alert(`Você ganhou em ${numberOfMoves} jogadas e ${timer} segundos!`);
+        restartGame();
+        
     }
 }
 
-//function increaseTime () {
-  //   timer++;
-    // document.querySelector(".game-time").innerHTML = `Tempo de jogo: ${timer} segundos`;    
- //}
+function increaseTime () {
+    timer++;
+    document.querySelector(".game-time").innerHTML = `Tempo de jogo: ${timer} segundos`;    
+ }
+
+function restartGame(){
+    let restart = prompt("Quer reiniciar a partida?");
+
+    if(restart === "sim"){
+        letReset();
+    }
+    else{
+        prompt("Tchau!!!!");
+    }
+
+}
+
+function letReset(){
+    document.querySelector(".container").innerHTML="";
+    
+    clearInterval(intervalId);
+     
+    cardsOnTheBoard = 0;
+    deckOfCards = [];
+    numberOfCards = 0;
+    numberOfMoves = 0;
+    faceUpCards = [];
+    firstCardUp = false;
+    secondCardUp = false;
+    matchingPairs = 0
+    numberOfMatchings = 0;
+    click = 0;
+    timer =0;
+
+    verifyNumberOfCards();    
+    
+}

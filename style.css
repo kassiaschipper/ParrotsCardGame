@@ -71,11 +71,11 @@ body {
 
 .game-time{
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     position:fixed;
-    left: 45%;
+    left: 43%;
     bottom: 80%;
-    color: #75B79E;
+    color: crimson;
     
 }
 
@@ -94,7 +94,7 @@ body {
         width: 312px;
         height: 63px;
         position: relative;
-        left: 5%;
+        left: 10%;
         top: 3%;
         font-weight: 700;
         font-size: 36px;
@@ -107,8 +107,8 @@ body {
     }  
     .game-time{
         position: fixed;
-        left: 20%;
-        bottom: 85%;
+        left: 18%;
+        bottom: 98%;
         color: crimson;
     }
 }
