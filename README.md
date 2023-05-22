@@ -1,4 +1,4 @@
-# ParrotsCardGame
+# Parrots Card Game
 Jogo da memória com tema de papagaios
 
 ## Projeto #3 - Bootcamp Driven
